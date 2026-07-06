@@ -14,3 +14,13 @@ const now = new Date();
 const seconds = now.getSeconds();
 const minutes = now.getMinutes();
 const hours = now.getHours();
+
+#Day 03:
+this.dataset IMP object that contains all 'custom' data attributes
+
+Updating a custom property:
+const suffix = this.dataset.sizing || "";
+document.documentElement.style.setProperty(
+`--${this.name}`,
+this.value + suffix,
+);
