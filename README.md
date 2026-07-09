@@ -24,3 +24,12 @@ document.documentElement.style.setProperty(
 `--${this.name}`,
 this.value + suffix,
 );
+
+#Day 04:
+console.table() IMP cool alternative for console.log
+
+filter => you can give it 10 items and can return 2
+map => like a factory, give 10 'raw' items, always return 10
+reduce => DON'T use += inside the function, it mutates the arguments
+
+querySelectorAll creates a NodeList (similar to array), but does NOT have all array methods (map, filter, etc., but has forEach)
