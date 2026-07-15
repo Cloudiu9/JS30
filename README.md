@@ -38,3 +38,10 @@ querySelectorAll creates a NodeList (similar to array), but does NOT have all ar
 
 - On flexbox children, flex: 1 makes them evenly distribute within available space (if 5 containers, use flex: 5 as a 'focus' of a container)
 - We can next flexbox containers within eachother (item can be both child and container)
+
+#Day 06:
+
+- cool Regex matching
+  function numberWithCommas(number) {
+  return new Intl.NumberFormat("en-US").format(number);
+  }
