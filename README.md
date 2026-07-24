@@ -45,3 +45,19 @@ querySelectorAll creates a NodeList (similar to array), but does NOT have all ar
   function numberWithCommas(number) {
   return new Intl.NumberFormat("en-US").format(number);
   }
+
+#Day 07:
+to delete an item from an array without mutating it (creating a new array instead)
+
+      const index = comments.findIndex((com) => com.id === 823423);
+
+      const newComments = [
+        ...comments.slice(0, index),
+        ...comments.slice(index + 1),
+      ];
+
+#Day 08:
+
+- Canvas in HTML
+- ctx.globalCompositeOperation for different modes
+- HSL for colors
