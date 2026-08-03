@@ -98,3 +98,21 @@ to delete an item from an array without mutating it (creating a new array instea
 
 - Table log
   console.table(dogs);
+
+# IMP Day 10:
+
+- Converting primitive types works with just String(123), but converting to array has to be with .from():
+  const boxes = Array.from(
+  document.querySelectorAll('.inbox input[type="checkbox"]'),
+  );
+
+  (or just spread)
+  const boxes = [...(document.querySelectorAll('.inbox input[type="checkbox"]'))];
+
+- Smart way of getting area between two indexes:
+  const start = Math.min(currentIndex, lastIndex);
+  const end = Math.max(currentIndex, lastIndex);
+
+          for (let i = start + 1; i < end; i++)
+            boxes[i].checked = !boxes[i].checked;
+
