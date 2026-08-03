@@ -61,3 +61,40 @@ to delete an item from an array without mutating it (creating a new array instea
 - Canvas in HTML
 - ctx.globalCompositeOperation for different modes
 - HSL for colors
+
+# IMP Day 09:
+
+- Right click on element, inspect, right click in the inspector, "Break On" => attribute modification (debugger step-by-step on click)
+- Different console.logs:
+  console.log("%c Hello", "font-size: 50px");
+
+- only fires if first arg of assert is false
+  const p = document.querySelector("p");
+
+      console.assert(p.classList.contains("ouch"), "That is wrong!");
+
+- Viewing DOM Elements
+  console.log(p); // shows just the dom element itself
+  console.dir(p); // shows everything it 'contains' (attributes, children, etc)
+
+- IMP Grouping together IMP
+
+      dogs.forEach((dog) => {
+        console.group(`${dog.name}`); // OR console.groupCollapsed
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old.`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
+        console.groupEnd(`${dog.name}`);
+      });
+
+- IMP Checking how long things are taking:
+  console.time("fetching data");
+  fetch("https://api.github.com/users/wesbos")
+  .then((data) => data.json())
+  .then((data) => {
+  console.timeEnd("fetching data");
+  console.log(data);
+  });
+
+- Table log
+  console.table(dogs);
