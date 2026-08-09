@@ -116,3 +116,6 @@ to delete an item from an array without mutating it (creating a new array instea
           for (let i = start + 1; i < end; i++)
             boxes[i].checked = !boxes[i].checked;
 
+# Day 11:
+
+- HTML Video element specifics and event listeners
