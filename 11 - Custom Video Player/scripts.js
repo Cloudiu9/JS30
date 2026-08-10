@@ -6,9 +6,12 @@ const progressBar = player.querySelector(".progress__filled");
 const toggle = player.querySelector(".toggle");
 const skipButtons = player.querySelectorAll("[data-skip]");
 const ranges = player.querySelectorAll(".player__slider");
+const fullscren = player.querySelector(".player__fullscreen");
+const controls = player.querySelector(".player__controls");
 
 // build functions
 function togglePlay() {
+  console.log(video);
   // there's only a 'paused' property, no 'playing'
   if (video.paused) {
     video.play();
@@ -42,11 +45,19 @@ function handleProgress() {
 }
 
 function scrub(e) {
-  console.log(e);
+  // console.log(e);
   // e.offsetX ==> how far we clicked onto the bar
 
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = scrubTime;
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    player.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
 }
 
 // hook up event listeners
@@ -55,14 +66,26 @@ video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
 video.addEventListener("timeupdate", handleProgress);
 
+let timerId;
+player.addEventListener("mousemove", () => {
+  player.classList.remove("hide-controls");
+
+  clearTimeout(timerId);
+
+  timerId = setTimeout(() => {
+    player.classList.add("hide-controls");
+  }, 1500);
+});
+
 toggle.addEventListener("click", togglePlay);
 
 skipButtons.forEach((btn) => {
   btn.addEventListener("click", skip);
 });
 
+// input instead of change to capture and apply changes instantly, without having to let go of the slider
 ranges.forEach((range) => {
-  range.addEventListener("change", handleRangeUpdate);
+  range.addEventListener("input", handleRangeUpdate);
 });
 
 let mouseDown = false;
@@ -71,4 +94,20 @@ progress.addEventListener("mousemove", (e) => mouseDown && scrub(e));
 progress.addEventListener("mousedown", () => (mouseDown = true));
 progress.addEventListener("mouseup", () => (mouseDown = false));
 
-// TODO add fullscreen button
+fullscren.addEventListener("click", toggleFullscreen);
+
+controls.addEventListener("mousemove", (e) => {
+  // stops event from bubbling up to player, which caused the controls to hide even on hover
+  e.stopPropagation();
+
+  clearTimeout(timerId);
+
+  player.classList.remove("hide-controls");
+});
+
+controls.addEventListener("mouseleave", () => {
+  clearTimeout(timerId);
+  timerId = setTimeout(() => {
+    player.classList.add("hide-controls");
+  }, 2000);
+});
