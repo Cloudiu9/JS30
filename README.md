@@ -119,3 +119,13 @@ to delete an item from an array without mutating it (creating a new array instea
 # Day 11:
 
 - HTML Video element specifics and event listeners
+- e.stopPropagation() // stops bubbling, ex: hover over controls that are 'over' the player, need to stopPropagation in order for them to not bubble up the event listener to the whole player
+
+# Day 12:
+
+- Check input with
+  window.addEventListener('keyup', (e) => {
+  console.log(e.key)
+  })
+- keep an array only at a max number of characters by pushing out the first element:
+  if (pressed.length > secretCode.length) pressed.shift();
