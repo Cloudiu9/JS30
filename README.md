@@ -129,3 +129,11 @@ to delete an item from an array without mutating it (creating a new array instea
   })
 - keep an array only at a max number of characters by pushing out the first element:
   if (pressed.length > secretCode.length) pressed.shift();
+
+# Day 13:
+
+- debouncing function that limits how often a function runs in a short period, useful for events like scroll, resize, input
+- window.innerHeight => height of the visible browser window (viewport)
+- window.scrollY => how far we've scrolled down from the top of the page
+- slideImage.height => height of the image itself
+- slideImage.offsetTop => distance from the top of the page to the image's top edge
