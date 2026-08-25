@@ -137,3 +137,38 @@ to delete an item from an array without mutating it (creating a new array instea
 - window.scrollY => how far we've scrolled down from the top of the page
 - slideImage.height => height of the image itself
 - slideImage.offsetTop => distance from the top of the page to the image's top edge
+
+# Day 14:
+
+- const newArr = arr => reference of array, change 1 and both will change
+- array.slice() => makes a copy of the array (not just by reference, only 1 will change)
+- const team3 = [].concat(players); => copy of array
+- const team5 = Array.from(players) => copy of array
+
+- IMP most modern: spread operator
+  const team4 = [...players];
+  team4[3] = "A A A A";
+  console.log(team4); // changed
+  console.log(players); // untouched
+
+- IMP spread operator works for objects too: (shallow copy)
+  const cap3 = { ...person };
+  cap3.number = 2000;
+  console.log(cap3, person); // person is unchanged! (shallow copy, doesn't work for deeply nested properties)
+
+- IMP to make a deep/full copy:
+  const original = {
+  name: "Charlie",
+  address: { city: "New York" }
+  };
+
+  const deepCopy = {
+  ...original,
+  address: { ...original.address, city: "Miami" }
+  };
+
+- IMP OR new function to deep clone: (structuredClone())
+  const cloudNEW = structuredClone(Cloudie);
+  cloudNEW.job.looking = false;
+
+  console.log(cloudNEW, Cloudie); // doesn't change original Cloudie object
